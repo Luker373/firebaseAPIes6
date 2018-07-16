@@ -1,0 +1,21 @@
+{
+  "name": "SimpleAPIes6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Luke H",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "deploy": "yarn run package-functions && firebase deploy --only functions",
+    "prepackage-functions": "rimraf functions",
+    "package-functions": "babel functionsES6 --out-dir functions --presets=es2015 --copy-files --ignore node_modules",
+    "postpackage-functions": "cd functions && yarn"
+  },
+  "dependencies": {
+    "firebase-admin": "^5.12.1"
+  }
+}
